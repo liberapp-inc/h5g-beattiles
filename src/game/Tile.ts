@@ -12,9 +12,6 @@ class Tile extends GameObject{
     sizeW:number;
     sizeH:number;
 
-    tapX:number;
-    tapY:number;
-
     constructor( x:number, y:number ) {
         super();
 
@@ -22,12 +19,10 @@ class Tile extends GameObject{
         this.sizeW = Util.w(TilePerW);
         this.sizeH = Util.h(TilePerH);
         this.setShape(x, y);
-        GameObject.gameDisplay.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (e: egret.TouchEvent) => this.touchBegin(e), this);
     }
 
     onDestroy(){
         Tile.tiles = Tile.tiles.filter( obj => obj != this );
-        GameObject.gameDisplay.stage.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, (e: egret.TouchEvent) => this.touchBegin(e), this);
     }
 
     setShape(x:number, y:number){
@@ -41,34 +36,36 @@ class Tile extends GameObject{
         shape.graphics.endFill();
     }
 
-    touchBegin(e:egret.TouchEvent){
-        this.tapX = e.localX;
-        this.tapY = e.localY;
-    }
-
     update() {
         this.Y += Game.I.speed;
 
         if( this.checkTouch() ) {
-            this.destroy();
+            this.defeated();
         }
 
-        if( this.Y >= Util.height + this.sizeH * 0.5 ){
-            // todo ミス処理
+        // 通過みのがし
+        if( this.checkFall() ){
             this.destroy();
         }
-
-        this.tapX = this.tapY = 0;
     }
 
-    checkTouch() : boolean {
-        if( this.tapX > 0 ){
-            if( (this.tapX - this.X ) ** 2 < (this.sizeW*0.5) ** 2 &&
-                (this.tapY - this.Y ) ** 2 < (this.sizeH*0.5) ** 2 ){
+    checkTouch():boolean {
+        if( Game.I.press ){
+            if( (Game.I.tapX - this.X ) ** 2 < (this.sizeW*0.5) ** 2 &&
+                (Game.I.tapY - this.Y ) ** 2 < (this.sizeH*0.5) ** 2 ){
                 return true;
             }
         }
-        return false;
+    }
+    checkFall():boolean{
+        return ( this.Y >= Util.height + this.sizeH * 0.5 );
+    }
+
+    defeated(){
+        this.destroy();
+        for( let i=0 ; i<15 ; i++ ){
+            new Debris( this.X, this.Y );
+        }
     }
 }
 
