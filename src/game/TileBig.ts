@@ -20,12 +20,17 @@ class TileBig extends Tile{
     }
 
     update() {
+        this.display.rotation *= 0.75;
+
         if( this.checkTouch() ) {
             if( (--this.hp) <= 0 ){
                 this.defeated();
                 return;
             }
+            Score.I.addPoint(2);
+            SoundEffect.I.play();
             Game.I.speed = 0;
+            this.display.rotation = randI(-5,+5);
             for( let i=0 ; i<4 ; i++ ){
                 new Debris( Game.I.tapX, Game.I.tapY );
             }
@@ -36,13 +41,6 @@ class TileBig extends Tile{
         // 通過みのがし
         if( this.checkFall() ){
             this.destroy();
-        }
-    }
-
-    defeated(){
-        this.destroy();
-        for( let i=0 ; i<30 ; i++ ){
-            new Debris( this.X, this.Y );
         }
     }
 }
