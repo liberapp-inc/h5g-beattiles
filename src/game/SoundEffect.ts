@@ -27,7 +27,8 @@ class SoundEffect extends GameObject {//egret.DisplayObjectContainer {
     private startLoad():void {
         //创建 Sound 对象
         var sound = new egret.Sound();
-        var url:string = "resource/assets/kick-middle1.mp3";
+        // var url:string = "resource/assets/kick-middle1.mp3";
+        var url:string = "resource/assets/kick-middle1mono.wav";
         //添加加载完成侦听
         sound.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
         //开始加载
