@@ -32,34 +32,38 @@ class Tile extends GameObject{
         shape.x = x;
         shape.y = y;
         shape.graphics.beginFill(TileColor);
-        shape.graphics.drawRoundRect(-0.5*this.sizeW, -0.45*this.sizeH, this.sizeW, this.sizeH*0.9, this.sizeW*0.2);
+        shape.graphics.drawRect(-0.5*this.sizeW, -0.45*this.sizeH, this.sizeW, this.sizeH*0.9 );
         shape.graphics.endFill();
     }
 
     update() {
-        this.Y += Game.I.speed;
-
+        if( GameOver.I ) return;
+        
         if( this.checkTouch() ) {
             this.defeated();
+            return;
         }
+
+        this.Y += Game.I.speed;
 
         // 通過みのがし
         if( this.checkFall() ){
-            this.destroy();
+            new GameOver();
+            // this.destroy();
         }
     }
 
     checkTouch():boolean {
         if( Game.I.press ){
-            if( (Game.I.tapX - this.X ) ** 2 < (this.sizeW*0.5) ** 2 &&
-                (Game.I.tapY - this.Y ) ** 2 < (this.sizeH*0.5) ** 2 ){
+            if( (Game.I.tapX - this.X ) ** 2 < (this.sizeW*0.6) ** 2 &&
+                (Game.I.tapY - this.Y ) ** 2 < (this.sizeH*0.6) ** 2 ){
                 return true;
             }
         }
     }
     checkFall():boolean{
         // return ( this.Y >= Util.height + this.sizeH * 0.5 );
-        return this.Y >= Util.height;
+        return this.Y > Util.height;
     }
 
     defeated(){

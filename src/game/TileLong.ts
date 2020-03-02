@@ -22,6 +22,8 @@ class TileLong extends Tile{
     }
 
     update() {
+        if( GameOver.I ) return;
+        
         this.display.anchorOffsetX *= 0.5;
         this.display.anchorOffsetY *= 0.5;
 
@@ -29,7 +31,7 @@ class TileLong extends Tile{
             this.sizeH -= Game.I.speed;
             this.display.scaleY -= Game.I.speed / Util.h(TilePerH);
             this.Y -= Game.I.speed / 2;
-            if( (--this.sizeH) <= Util.h(TilePerH) ){
+            if( this.sizeH <= Util.h(TilePerH*1.5) ){
                 this.defeated();
                 return;
             }
@@ -46,14 +48,15 @@ class TileLong extends Tile{
 
         // 通過みのがし
         if( this.checkFall() ){
-            this.destroy();
+            new GameOver();
+            // this.destroy();
         }
     }
 
     checkTouching():boolean {
         if( Game.I.touch ){
-            if( (Game.I.tapX - this.X ) ** 2 < (this.sizeW*0.5) ** 2 &&
-                (Game.I.tapY - this.Y ) ** 2 < (this.sizeH*0.5) ** 2 ){
+            if( (Game.I.tapX - this.X ) ** 2 < (this.sizeW*0.6) ** 2 &&
+                (Game.I.tapY - this.Y ) ** 2 < (this.sizeH*0.6) ** 2 ){
                 return true;
             }
         }

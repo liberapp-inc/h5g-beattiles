@@ -7,6 +7,7 @@
 class SoundEffect extends GameObject {//egret.DisplayObjectContainer {
 
     public static I:SoundEffect = null;
+
     sound:egret.Sound = null;
 
     public constructor() {
@@ -26,7 +27,7 @@ class SoundEffect extends GameObject {//egret.DisplayObjectContainer {
     private startLoad():void {
         //创建 Sound 对象
         var sound = new egret.Sound();
-        var url:string = "resource/assets/bomb.mp3";
+        var url:string = "resource/assets/kick-middle1.mp3";
         //添加加载完成侦听
         sound.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
         //开始加载
@@ -40,12 +41,12 @@ class SoundEffect extends GameObject {//egret.DisplayObjectContainer {
 
     play(){
         //播放音乐
-        egret.log("play");
+        // egret.log("play");
         var channel:egret.SoundChannel = this.sound.play(0.0, 1);
-        channel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
+        // channel.addEventListener(egret.Event.SOUND_COMPLETE, this.onSoundComplete, this);
     }
 
-    private onSoundComplete(event:egret.Event):void {
-        egret.log("onSoundComplete");
-    }
+    // private onSoundComplete(event:egret.Event):void {
+    //     egret.log("onSoundComplete");
+    // }
 }

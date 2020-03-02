@@ -4,7 +4,7 @@
 const DebrisPerW = 0.1;
 const DebrisPerH = 0.1;
 const DebrisColor = 0x000000;
-const DebrisVPerW = 0.05;
+const DebrisVPerW = 0.06;
 const DebrisVR = 20;
 
 class Debris extends GameObject{

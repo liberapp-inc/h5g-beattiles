@@ -6,13 +6,10 @@ const DefaultBestScore = 50;
 
 const BACK_COLOR = 0xf8fafc;    // index.htmlで設定
 const FONT_COLOR = 0x303030;
-const FONT2_COLOR = 0xe00000;
-const BIKER_COLOR = 0x202020;
-const RIVAL_COLOR = 0xA02000;
-const LAND_COLOR = 0x202020;
+const FONT2_COLOR = 0xd00000;
 
 const GameSpeedLowPH = 1/120;
-const GameSpeedTopPH = 1/30;
+const GameSpeedTopPH = 1/45;
 
 class Game extends GameObject{
 
@@ -89,7 +86,7 @@ class Game extends GameObject{
 
             if( randBool( 0.8 ) ){
                 new Tile( x, y );
-                this.next += randI( 1, 3+1 ) * Util.h(TilePerH);
+                this.next += randI( 1, 4+1 ) * Util.h(TilePerH);
             }else{
                 if( randBool( 0.7 ) ){
                     new TileLong( x, y );

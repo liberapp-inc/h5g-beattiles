@@ -5,7 +5,7 @@ const tileBigScale = 2;
 
 class TileBig extends Tile{
 
-    hp:number = 10;
+    hp:number = 7;
 
     constructor( x:number, y:number ) {
         super( x, y );
@@ -20,6 +20,8 @@ class TileBig extends Tile{
     }
 
     update() {
+        if( GameOver.I ) return;
+        
         this.display.rotation *= 0.75;
 
         if( this.checkTouch() ) {
@@ -40,7 +42,8 @@ class TileBig extends Tile{
 
         // 通過みのがし
         if( this.checkFall() ){
-            this.destroy();
+            new GameOver();
+            // this.destroy();
         }
     }
 }
