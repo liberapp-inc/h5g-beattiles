@@ -1,6 +1,6 @@
 // Liberapp 2020 - Tahiti Katagai
 // スタート時の説明テキスト
-
+/*
 class StartMessage extends GameObject{
 
     static I:StartMessage = null;
@@ -15,7 +15,7 @@ class StartMessage extends GameObject{
         this.rectFilter = new Rect( 0, Util.h(0.325), Util.width, Util.h(0.3), 0x000000, false, true );
         this.rectFilter.display.alpha = 0.4;
         this.texts[0] = Util.newTextField("黒いのを打て", Util.width / 12, FONT_COLOR, 0.5, 0.4, true, false);
-        this.texts[1] = Util.newTextField("流れてくる黒タイルをタップ！", Util.width / 20, FONT_COLOR, 0.5, 0.5, true, false);
+        this.texts[1] = Util.newTextField("流れてくる黒タイルをタップ！2", Util.width / 20, FONT_COLOR, 0.5, 0.5, true, false);
         this.texts.forEach( text =>{ GameObject.baseDisplay.addChild( text ); });
 
         this.button = new Button( null, 0, 0, 0.5, 0.5, 1, 1, 0x000000, 0.0, false, this.onTap ); // 透明な全画面ボタン
@@ -40,3 +40,4 @@ class StartMessage extends GameObject{
         }
     }
 }
+*/

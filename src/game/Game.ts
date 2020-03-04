@@ -31,7 +31,6 @@ class Game extends GameObject{
     constructor() {
         super();
         Game.I = this;
-        new SoundEffect();
         this.speedMax = this.speed = Util.h( GameSpeedLowPH );
 
         GameObject.gameDisplay.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (e: egret.TouchEvent) => this.touchBegin(e), this);

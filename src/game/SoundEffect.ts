@@ -4,7 +4,7 @@
  * 以下示例加载一个 MP3 文件，进行播放，并输出播放该 MP3 文件时所发生的声音事件的相关信息。
  */
 
-class SoundEffect extends GameObject {//egret.DisplayObjectContainer {
+class SoundEffect extends egret.DisplayObjectContainer {
 
     public static I:SoundEffect = null;
 
@@ -16,19 +16,19 @@ class SoundEffect extends GameObject {//egret.DisplayObjectContainer {
         this.startLoad();
     }
 
-    onDestroy(){
-        SoundEffect.I = null;
-    }
+    // onDestroy(){
+    //     SoundEffect.I = null;
+    // }
 
-    update(){
-    }
+    // update(){
+    // }
 
 
     private startLoad():void {
         //创建 Sound 对象
         var sound = new egret.Sound();
         // var url:string = "resource/assets/kick-middle1.mp3";
-        var url:string = "resource/assets/kick-middle1mono.wav";
+        var url:string = "resource/assets/kickm1.wav";
         //添加加载完成侦听
         sound.addEventListener(egret.Event.COMPLETE, this.onLoadComplete, this);
         //开始加载

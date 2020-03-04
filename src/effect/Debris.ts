@@ -35,7 +35,7 @@ class Debris extends GameObject{
         shape.graphics.beginFill(TileColor);
         const w = Util.w( randF(DebrisPerW/4, DebrisPerW) );
         const h = Util.h( randF(DebrisPerH/4, DebrisPerH) );
-        shape.graphics.drawRoundRect(-0.5*w, -0.5*h, w, h, w*0.2);
+        shape.graphics.drawRect(-0.5*w, -0.5*h, w, h );
         shape.graphics.endFill();
     }
 
