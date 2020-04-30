@@ -24,19 +24,8 @@ class GameOver extends GameObject{
 
         // New record
         if( Score.I.point > Score.I.bestScore ){
-            this.sendScore();
-        }
-    }
-
-    async sendScore(){
-        Util.setSaveDataNumber( SaveKeyBestScore, Score.I.point );
-        // 送信
-        const l = await Main.sdk.getLeaderboardAsync("board");
-        const serverEntry = await l.getPlayerEntryAsync();
-        let serverScore = serverEntry.getScore();
-        // サーバースコアなし、ローカルスコア記録あり（未送信）なら、スコア送信
-        if( serverScore == null || Score.I.point > serverScore ){
-            serverScore = await l.setScoreAsync( Score.I.point );  // 引数[追加データ]はバグのため不可
+            Util.setSaveDataNumber( SaveKeyBestScore, Score.I.point );
+            SdkUtil.I.sendScore( Score.I.point );
         }
     }
 
