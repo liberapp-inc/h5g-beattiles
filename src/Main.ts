@@ -1,36 +1,27 @@
 // Liberapp 2020 - Tahiti Katagai
 // 黒いのを打て
 
+const SDK = true;
+
 class Main extends eui.UILayer {
 
     public constructor() {
         super();
         this.once(egret.Event.ADDED_TO_STAGE, this.addToStage, this);
     }
- 
-    private async addToStage() {
-        // await this.loadResource();
-        new SdkUtil();
-        await SdkUtil.I.init();
 
+    private async addToStage() {
         Util.initial( this );
         GameObject.initial( this.stage );
         // PhysicsObject.prepare( PIXEL_PER_METER );
         Camera2D.initial();
 
+        if( SDK ){
+            await Social.init();
+        }
         SceneTitle.loadScene();
         egret.startTick(this.tickLoop, this);
     }
-
-    // private async loadResource() {
-    //     try {
-    //         await RES.loadConfig("resource/default.res.json", "resource/");
-    //         await RES.loadGroup("preload", 0);
-    //     }
-    //     catch (e) {
-    //         console.error(e);
-    //     }
-    // }
 
     tickLoop(timeStamp:number):boolean{
         // PhysicsObject.progress();

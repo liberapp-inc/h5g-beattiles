@@ -1,7 +1,7 @@
 // Liberapp 2020 - Tahiti Katagai
 // ゲーム
 
-const SaveKeyBestScore = "beattiles-bestScore";
+// const SaveKeyBestScore = "beattiles-bestScore";
 const DefaultBestScore = 50;
 
 const BACK_COLOR = 0xf8fafc;    // index.htmlで設定

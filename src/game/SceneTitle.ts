@@ -18,7 +18,7 @@ class SceneTitle extends GameObject{
         this.texts[0] = Util.newTextField("黒いのを打て", Util.width / 9, FONT_COLOR, 0.5, 0.25, true, true);
         this.texts[1] = Util.newTextField("流れてくる黒タイルをタップ！", Util.width / 20, FONT_COLOR, 0.5, 0.35, true, false);
 
-        let bestScore = Util.getSaveDataNumber( SaveKeyBestScore, DefaultBestScore );
+        const bestScore = Score.bestScore;
         this.texts[2] = Util.newTextField("BEST"+bestScore+"", Util.width / 14, FONT_COLOR, 0.5, 0.45, true, true);
 
         this.startButton = new Button("スタート", Util.width/16, BACK_COLOR, 0.50, 0.70, 0.7, 0.12, FONT_COLOR, 1.0, true, this.onTapStart );

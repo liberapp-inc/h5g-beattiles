@@ -29,5 +29,10 @@
       "name": "egretmgobe",
       "path": "./libs/egretmgobe"
     }
-  ]
+  ],
+  "urlParams": {
+      "t": "2a91a350-5c53-11ea-b4b2-57ed5f5dc6a9",
+      "u": "988ba0f8-4d43-496f-b82d-2ebf7e6b127e",
+      "a": "7681f658-9161-451f-a71f-c240e5919a1a"
+  }  
 }

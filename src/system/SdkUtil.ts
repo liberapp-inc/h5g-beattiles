@@ -1,7 +1,12 @@
 // Liberapp 2020 Tahiti Katagai
 // LiberappSDK 便利くん
-
+/*
 const BoardName = "board1";
+
+// ローカルデバッグ用
+const AppKey = null;    // null ならローカルデバッグ無効
+const AppToken = "";
+const AppUser = "";
 
 class SdkUtil{
 
@@ -17,10 +22,9 @@ class SdkUtil{
         SdkUtil.sdk = window["LiberappSdk"];
 
         try {
-            // ローカルデバッグ　本番
-      //    await SdkUtil.sdk.enableDebug({ applicationKey: "2eef7171-6518-4aa2-9c4d-aee9f1db2f4f", debugSigninOptions: { accessToken: "4a70930c-f73e-46a6-8bd9-9372c15b88f1", userAkey: "989ed547-b3f1-45e3-a08f-c9f426d2a14b" } });
-            // ローカルデバッグ　staging
-      //   await SdkUtil.sdk.enableDebug({ applicationKey: "bda13546-ec77-4398-a54c-e025b240f8e9", debugSigninOptions: { accessToken: "d6717ce2-8053-4402-8eb0-999c3dd8e605", userAkey: "02e412b2-e266-468b-af9b-008b502528ba" } });
+            // ローカルデバッグ
+            if( AppKey )
+                await SdkUtil.sdk.enableDebug({ applicationKey: AppKey, debugSigninOptions: { accessToken: AppToken, userAkey: AppUser } });
             
             await SdkUtil.sdk.initializeAsync();
             await SdkUtil.sdk.startGameAsync();
@@ -86,5 +90,4 @@ class SdkUtil{
     }
 }
 
-
-
+*/

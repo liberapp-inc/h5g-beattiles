@@ -6,7 +6,8 @@ class Score extends GameObject{
     static I:Score = null;   // singleton instance
 
     point:number = 0;
-    bestScore:number = 0;
+    static bestScore:number = 0;
+    static bestRank:number = 0;
     text:egret.TextField = null;
     // textBest:egret.TextField = null;
 
@@ -18,7 +19,6 @@ class Score extends GameObject{
         this.text = Util.newTextField("", Util.width / 22, FONT2_COLOR, 0.0, 0.0, true, true);
         GameObject.baseDisplay.addChild( this.text );
 
-        this.bestScore = Util.getSaveDataNumber( SaveKeyBestScore, DefaultBestScore );
         //?? test ハイスコアいつでもテスト用
         // this.bestScore = 3;
     }
