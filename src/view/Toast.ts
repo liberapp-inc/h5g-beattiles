@@ -26,12 +26,13 @@ class Toast extends GameObject  {
     this.I.show(options);
   }
 
-  onDestory() {
+  onDestroy() {
     const i = Toast.I;
     Toast.I = undefined;
     if (!i) {
       return;
     }
+    i.rect.parent.removeChild( i.rect );
     i.rect.removeChildren();
     i.rect = undefined;
     i.label = undefined;
@@ -90,6 +91,7 @@ class Toast extends GameObject  {
     this.currentTween = undefined;
     this.currentOptions = undefined;
     if (0 === this.queue.length) {
+      this.destroy();
       return;
     } 
     const options = this.queue.shift();
